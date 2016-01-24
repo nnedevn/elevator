@@ -1,0 +1,39 @@
+body {
+
+}
+
+#elevator-direction{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    width: 650px;
+    background-color: cyan;
+
+}
+#floor-panel {
+    background-color: lightgreen;
+    width: 300px
+}
+
+#elevator-cart{
+    width:50px;
+    background-color: lightpink;
+}
+
+#elevator-panel{
+    width: 300px;
+    background-color: lightblue;
+
+}
+
+.flex{
+    height:600px;
+    display:flex;
+}
+.active{
+    color:yellow;
+}
+
+.floor{
+    height: 50px;
+}

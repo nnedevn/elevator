@@ -4,7 +4,8 @@ let ElevatorCtrl = (function () {
 
 	function ElevatorCtrl() {
 		this.travelSpeed = 1; //sec
-		this.loadUnloadTime = 3; //sec
+		this.loadUnloadSpeed = 3; //sec
+		this.currentSpeed = 1;
 		this.destinationFloor = 0;
 		this.destinationsList = [];
 		this.callbacks = [];
@@ -21,67 +22,101 @@ let ElevatorCtrl = (function () {
 		// TODO: ElevatorCtrl.prototype.removeCallback (callback){}
 
 		ElevatorCtrl.prototype.refresh = function () {
-			fireEvent(this, 'floor'); //to be changed
+			fireEvent(this, 'floor'); //TODO to be changed
 			return this;
 		};
 		ElevatorCtrl.prototype.buttonPress = function (floor) {
-			cl('The floor pushed is: ' + floor);
+			// cl('The floor pushed is: ' + floor);
 			floor = Number(floor);
 			// cl('destination list before push' + this.destinationsList);
 			if (!isContainedInArray(floor, this.destinationsList)) {
 				this.destinationsList.push(floor);
 			}
-			cl('destinationsList contains: ' + this.destinationsList);
+			console.log('destinationsList contains: ' + this.destinationsList);
 			// cl('destination list after push' + this.destinationsList);
-			moveElevator(this);
 
+			if (this.destinationsList.length === 1) {
+				//ensure the move funciton is not called every time the button is pressed,
+				//thus ignoring the timers.
+				moveElevator(this);
+				console.log('Array length is: ' + this.destinationsList.length);
+			}
 			return this;
 		};
 
 		function moveElevator(ctrl) { //to be renamed
 
-			cl('Current floor is: ' + ctrl.elevator.currentFloor);
+			console.log('Current floor is: ' + ctrl.elevator.currentFloor);
 			if (typeof ctrl.destinationsList === 'undefined' || ctrl.destinationsList.length === 0) {
-				cl('destination array is undefined or empty');
+				console.log('Error: destination array is undefined or empty');
 				//Hmmmmm not good but works for now.
 				window.clearInterval(ctrl.elevator.timer);
 				ctrl.elevator.timer = null;
 				return;
 			}
-			cl('Now heading to floor: ' + ctrl.destinationsList[0]);
+			console.log('Now heading to floor: ' + ctrl.destinationsList[0]);
+
+
 
 			if (ctrl.destinationsList[0] === ctrl.elevator.currentFloor) {
 				window.clearInterval(ctrl.elevator.timer);
 				ctrl.elevator.timer = null;
 				fireEvent(ctrl, 'arrived');
 				ctrl.elevator.direction = 0;
-				cl('Arrived at ' + ctrl.elevator.currentFloor + ' floor');
 				ctrl.destinationsList.shift();
 				ctrl.refresh();
+
+				// setTimeout(function (){
+				// 	moveElevator(ctrl);
+				// }, 3000);
 
 			}
 
 			if (ctrl.elevator.currentFloor < ctrl.destinationsList[0]) {
-				cl('we\'re heading up');
+				// cl('we\'re heading up');
+
 				fireEvent(ctrl, 'up');
 				ctrl.elevator.direction = +1;
 				ctrl.elevator.currentFloor += 1;
+
 				ctrl.refresh();
 			}
 
 			if (ctrl.elevator.currentFloor > ctrl.destinationsList[0]) {
-				cl('we\'re heading down');
+				// cl('we\'re heading down');
+
 				fireEvent(ctrl, 'down');
 				ctrl.elevator.direction = -1;
 				ctrl.elevator.currentFloor -= 1;
+
 				ctrl.refresh();
 			}
 
 			if (!ctrl.elevator.timer) {
-				ctrl.elevator.timer = setInterval(function () {
-					moveElevator(ctrl);
-				}, ctrl.travelSpeed * 1000);
+
+						ctrl.currentSpeed = Number(ctrl.currentSpeed);
+						ctrl.elevator.timer = setInterval(function () {
+						moveElevator(ctrl);
+						console.log('The timer speed is: ' + ctrl.currentSpeed);
+					}, 1000);
+
+
 			}
+			function speedAndLoadTiming(ctrl){
+
+			}
+			// if (ctrl.elevator.direction === 0) {
+			// 	window.clearInterval(ctrl.elevator.timer);
+			// 	ctrl.elevator.timer = null;
+			// 	ctrl.currentSpeed = ctrl.loadUnloadSpeed;
+			// 	moveElevator(ctrl);
+			// }
+			// if (ctrl.elevator.direction === 1 || ctrl.elevator.direction === -1){
+			// 	window.clearInterval(ctrl.elevator.timer);
+			// 	ctrl.elevator.timer = null;
+			// 	ctrl.currentSpeed = ctrl.travelSpeed;
+			// 	moveElevator(ctrl);
+			// }
 
 		}
 		/*Sends the elevator's controller and an 'event' to all the callbacks
@@ -102,17 +137,15 @@ let ElevatorCtrl = (function () {
 		function isContainedInArray(floor, destinationsList) { //NOT DONE
 
 			if (floor === null || destinationsList === null) {
-				cl('sanitization error, either floor or array are null');
+				console.log('sanitization error, either floor or array are null');
 				//maybe some cheching, a throw statement?
 				return;
 			}
+			if ((destinationsList.indexOf(floor)) === -1) {
+				return false;
+			} else {
+				return true;
 
-			for (let i = 0; i < destinationsList.length; i++) {
-				if (floor === destinationsList[i]) {
-					return true;
-				} else {
-					return false;
-				}
 			}
 		}
 
@@ -123,11 +156,11 @@ let ElevatorCtrl = (function () {
 })();
 
 function moveImage(ctrl, event) {
-	cl(ctrl.currentFloor);
+
 	$('#elevator-img').appendTo($('#' + 'floor-number-' + ctrl.currentFloor));
 }
 
-function highliteDirection(ctrl, event) {
+function highlitedDirection(ctrl, event) {
 
 	if (event === 'up') {
 		$('#up-indicator').addClass('active');
@@ -140,44 +173,53 @@ function highliteDirection(ctrl, event) {
 	if (event === 'arrived') {
 		$('#up-indicator, #down-indicator').removeClass('active');
 		$('#current-floor-indicator').addClass('active');
+		// let ding = new Audio('http://soundbible.com/grab.php?id=1441&type=mp3');
+		// ding.play();
 	}
 }
 
 function displayCurrentFloor(ctrl, event) {
 	if (event === 'floor') {
-		cl(ctrl);
 		$('#current-floor-indicator').html(ctrl.currentFloor);
+		console.log('direction: ' + ctrl.direction);
 	}
 }
 
-function clearFloorSelection(ctrl, event){
-		if (event === 'arrived'){
-			$('#floor-number-' + ctrl.currentFloor).removeClass('active');
-			//find the button that has a value of current floor
-			//remove the active class.
-
-		}
+function clearFloorSelection(ctrl, event) {
+	if (event === 'arrived') {
+		$('#button-number-' + ctrl.currentFloor).removeClass('active');
+	}
 }
 let lift = new ElevatorCtrl();
 
 lift.addCallback(moveImage)
-	.addCallback(highliteDirection)
+	.addCallback(highlitedDirection)
 	.addCallback(displayCurrentFloor)
 	.addCallback(clearFloorSelection);
 
-
 $(function init() {
 
-	$('#elevator-panel button').click(function () {
+	$('#elevator-panel button, #floor-panel ul li button').click(function () {
 		$(this).addClass('active');
 		lift.buttonPress($(this).val());
-		lift.refresh();
+
 	});
 });
 
 
-//---------
 
-function cl(param) {
-	console.log(param);
-}
+// cl($('#floor-panel ul li').val() + ' value');
+
+
+// let list = [1,2,3,4,5];
+// let item = 3;
+//
+// cl(list.indexOf(item));
+// if (list.indexOf(item) === -1 || list.indexOf(item) === list.indexOf(item) +-1 ){
+// 	list.push(item);
+// }
+// cl(list);
+// });
+
+
+//---------

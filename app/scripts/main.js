@@ -3,7 +3,7 @@
 let ElevatorCtrl = (function() {
   function ElevatorCtrl() {
     this.travelSpeed = 1; //sec
-    this.loadUnloadSpeed = 3; //sec
+    this.loadUnloadSpeed = 3; //sec 
     this.currentSpeed = 1;
     this.destinationFloor = 0;
     this.destinationsList = [];
@@ -77,14 +77,14 @@ let ElevatorCtrl = (function() {
         ctrl.destinationsList.shift();
         ctrl.refresh();
       }
-      // TODO: Optimize.
+      // TODO: Refactor and optimize. 
       if (!ctrl.elevator.timer) {
         if (ctrl.elevator.direction === 0) {
           setTimeout(function() {
             ctrl.elevator.timer = setInterval(function() {
               moveElevator(ctrl);
             }, 1000);
-          }, 3000);
+          }, 2000); // setTimeout + setInterval = 3sec
         } else {
           ctrl.travelSpeed = Number(ctrl.currentSpeed);
           ctrl.elevator.timer = setInterval(function() {
@@ -174,13 +174,25 @@ lift.addCallback(moveImage)
   .addCallback(uiBehaviour);
 // possible switchImage. Open and closed doors.
 
-/**Initiates the elevator by sending the value attribute of the button pressed to the lyft object.
+/** Initiates the elevator by sending the value attribute of the button pressed to the lyft object.
  *
 */
 $(function init() {
+
+
   $('#elevator-panel button, #floor-panel ul li button').click(function() {
     $(this).addClass('active');
     lift.buttonPress($(this).val());
+    console.log(this);
 
   });
 });
+
+
+/*
+  if what was clicked was on the elevator pannel 
+  this will be determined if the parent of this has an id of elevator-pannel
+
+  if what was clicked belongs to the floor pannel
+  this will be determined by the parent of this having an id of floor-pannel
+*/

@@ -17,117 +17,98 @@
 
     <div class="container">
 
-      <div id="elevator-direction">
-        <div id="up-indicator">^</div>
-        <div><span id="current-floor-indicator">&nbsp Lobby &nbsp</span></div>
+      <div id="elevator-direction" class="row">
+        <div id="up-indicator" class="">^</div>
+        <div><span id="current-floor-indicator">Lobby</span></div>
         <div id="down-indicator">v</div>
       </div>
 
-      <div class="flex">
+      <div class="row">
 
-        <div id="floor-panel">
-          <ul>
-            <li value="9">9
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="8">8
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="7">7
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="6">6
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="5">5
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="4">4
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="3">3
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="2">2
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="1">1
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-                <li>
-                  <button>v</button>
-                </li>
-              </ul>
-            </li>
-            <li value="0">G
-              <ul>
-                <li>
-                  <button>^</button>
-                </li>
-              </ul>
-            </li>
+        <div id="floor-panel" class="col-lg-5 floor-panel">
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">9</span>
+            <ul>
+              <li><button value="9">^</button></li>
+              <li><button value="9">v</button></li>
+            </ul>
+          </div>
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">8</span>
+            <ul>
+              <li><button value="8">^</button></li>
+              <li><button value="8">v</button></li>
+            </ul>
+          </div>          
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">7</span>
+            <ul>
+              <li><button value="7">^</button></li>
+              <li><button value="7">v</button></li>
+            </ul>
+          </div>   
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">6</span>
+            <ul>
+              <li><button value="6">^</button></li>
+              <li><button value="6">v</button></li>
+            </ul>
+          </div>  
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">5</span>
+            <ul>
+              <li><button value="5">^</button></li>
+              <li><button value="5">v</button></li>
+            </ul>
+          </div> 
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">4</span>
+            <ul>
+              <li><button value="4">^</button></li>
+              <li><button value="4">v</button></li>
+            </ul>
+          </div> 
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">3</span>
+            <ul>
+              <li><button value="3">^</button></li>
+              <li><button value="3">v</button></li>
+            </ul>
+          </div> 
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">2</span>
+            <ul>
+              <li><button value="2">^</button></li>
+              <li><button value="2">v</button></li>
+            </ul>
+          </div> 
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">1</span>
+            <ul>
+              <li><button value="1">^</button></li>
+              <li><button value="1">v</button></li>
+            </ul>
+          </div>
+          
+          <div class="floor-panel-control">
+            <span class="floor-panel-label">G</span>
+            <ul>
+              <li><button value="0">^</button></li>
+              <li><button value="0">v</button></li>
+            </ul>
+          </div> 
 
-          </ul>
         </div>
-        <div id="elevator-cart">
+
+        <div id="elevator-cart" class="col-lg-2 elevator-cart">
           <div class="floor"
             id="floor-number-9">9</div>
           <div class="floor"
@@ -153,7 +134,7 @@
 
         </div>
 
-        <div id="elevator-panel">
+        <div id="elevator-panel" class="col-lg-5 elevator-panel">
           <button id="elevator-panel-button-number-9"
             value="9">9</button>
           <button id="elevator-panel-button-number-8"

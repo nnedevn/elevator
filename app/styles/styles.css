@@ -1,15 +1,40 @@
 body {
-
 }
 
-#elevator-direction{
+.floor {
+    height: 50px;
+}
+.active {
+    color:yellow;
+}
+.floor-panel { 
+    background-color: red;
+}
+.floor-panel-control {
+    display: block;
+    clear: both;
+}
+.floor-panel-label {
+    float: left;
+}
+.floor-panel ul li {
+    list-style: none;
+    float: left;
+}
+
+
+.elevator-cart { background-color: blue;}
+
+.elevator-panel {background-color: yellow;}
+
+
+/*#elevator-direction {
   display: flex;
   align-items: center;
   justify-content: center;
-    width: 650px;
-    background-color: cyan;
-
+  background-color: #d2d2d2;
 }
+
 #floor-panel {
     background-color: lightgreen;
     width: 300px
@@ -30,10 +55,7 @@ body {
     height:600px;
     display:flex;
 }
-.active{
-    color:yellow;
-}
 
-.floor{
-    height: 50px;
-}
+
+*/
+

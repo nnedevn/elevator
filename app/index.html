@@ -14,18 +14,24 @@
 
   <body>
 
-    <div class="container">
+    <div class="container-fluid">
 
-      <div id="elevator-direction" class="row">
-        <div id="up-indicator" class="">^</div>
-        <div><span id="current-floor-indicator">Lobby</span></div>
-        <div id="down-indicator">v</div>
+      <div id="elevator-direction" class="row elevator-direction">
+        <div id="up-indicator" class="elevator-indicator">
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+        </div>
+        <div class="elevator-indicator">
+          <span id="current-floor-indicator">G</span>
+        </div>
+        <div id="down-indicator" class="elevator-indicator">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </div>
       </div>
 
       <div class="row">
 
-        <div id="floor-panel" class="col-lg-5 floor-panel">
-          <div class="floor-panel-control">
+        <div id="floor-panel" class="col-lg-4 floor-panel">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">9</span>
             <ul>
               <li>
@@ -37,7 +43,7 @@
             </ul>
           </div>
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">8</span>
             <ul>
               <li>
@@ -49,7 +55,7 @@
             </ul>
           </div>          
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">7</span>
             <ul>
               <li>
@@ -61,7 +67,7 @@
             </ul>
           </div>   
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">6</span>
             <ul>
               <li>
@@ -73,7 +79,7 @@
             </ul>
           </div>  
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">5</span>
             <ul>
               <li>
@@ -85,7 +91,7 @@
             </ul>
           </div> 
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">4</span>
             <ul>
               <li>
@@ -97,7 +103,7 @@
             </ul>
           </div> 
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">3</span>
             <ul>
               <li>
@@ -109,7 +115,7 @@
             </ul>
           </div> 
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">2</span>
             <ul>
               <li>
@@ -121,7 +127,7 @@
             </ul>
           </div> 
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">1</span>
             <ul>
               <li>
@@ -133,7 +139,7 @@
             </ul>
           </div>
           
-          <div class="floor-panel-control">
+          <div class="floor-panel-control row">
             <span class="floor-panel-label">G</span>
             <ul>
               <li>
@@ -147,54 +153,43 @@
 
         </div>
 
-        <div id="elevator-cart" class="col-lg-2 elevator-cart">
-          <div class="floor"
-            id="floor-number-9">9</div>
-          <div class="floor"
-            id="floor-number-8">8</div>
-          <div class="floor"
-            id="floor-number-7">7</div>
-          <div class="floor"
-            id="floor-number-6">6</div>
-          <div class="floor"
-            id="floor-number-5">5</div>
-          <div class="floor"
-            id="floor-number-4">4</div>
-          <div class="floor"
-            id="floor-number-3">3</div>
-          <div class="floor"
-            id="floor-number-2">2</div>
-          <div class="floor"
-            id="floor-number-1">1</div>
-          <div class="floor"
-            id="floor-number-0">G <img id="elevator-img"
-              src="assets/elevator.jpeg"
+        <div id="elevator-cart" class="col-lg-4 elevator-cart">
+          <div class="floor row" id="floor-number-9"><span class="floor-number-label"> 9</span></div>
+          <div class="floor row" id="floor-number-8"><span class="floor-number-label"> 8</span></div>
+          <div class="floor row" id="floor-number-7"><span class="floor-number-label"> 7</span></div>
+          <div class="floor row" id="floor-number-6"><span class="floor-number-label"> 6</span></div>
+          <div class="floor row" id="floor-number-5"><span class="floor-number-label"> 5</span></div>
+          <div class="floor row" id="floor-number-4"><span class="floor-number-label"> 4</span></div>
+          <div class="floor row" id="floor-number-3"><span class="floor-number-label"> 3</span></div>
+          <div class="floor row" id="floor-number-2"><span class="floor-number-label"> 2</span></div>
+          <div class="floor row" id="floor-number-1"><span class="floor-number-label"> 1</span></div>
+          <div class="floor row" id="floor-number-0"><span class="floor-number-label"> G</span> <img id="elevator-img"
+              src="assets/elevator.png"
               alt=""></div>
 
         </div>
 
-        <div id="elevator-panel" class="col-lg-5 elevator-panel">
-          <button id="elevator-panel-button-number-9"
-            value="9">9</button>
-          <button id="elevator-panel-button-number-8"
-            value="8">8</button>
-          <button id="elevator-panel-button-number-7"
-            value="7">7</button>
-          <button id="elevator-panel-button-number-6"
-            value="6">6</button>
-          <button id="elevator-panel-button-number-5"
-            value="5">5</button>
-          <button id="elevator-panel-button-number-4"
-            value="4">4</button>
-          <button id="elevator-panel-button-number-3"
-            value="3">3</button>
-          <button id="elevator-panel-button-number-2"
-            value="2">2</button>
-          <button id="elevator-panel-button-number-1"
-            value="1">1</button>
-          <button id="elevator-panel-button-number-0"
-            value="0">G</button>
-
+        <div id="elevator-panel" class="col-lg-4 elevator-panel">
+          <div class="row">
+            <button id="elevator-panel-button-number-9" class="elevator-panel-button" value="9">9</button>
+            <button id="elevator-panel-button-number-8" class="elevator-panel-button" value="8">8</button>
+          </div>
+          <div class="row">
+            <button id="elevator-panel-button-number-7" class="elevator-panel-button" value="7">7</button>
+            <button id="elevator-panel-button-number-6" class="elevator-panel-button" value="6">6</button>
+          </div>
+          <div class="row">
+            <button id="elevator-panel-button-number-5" class="elevator-panel-button" value="5">5</button>
+            <button id="elevator-panel-button-number-4" class="elevator-panel-button" value="4">4</button>
+          </div>
+          <div class="row">
+            <button id="elevator-panel-button-number-3" class="elevator-panel-button" value="3">3</button>
+            <button id="elevator-panel-button-number-2" class="elevator-panel-button" value="2">2</button>
+          </div>
+          <div class="row">
+            <button id="elevator-panel-button-number-1" class="elevator-panel-button" value="1">1</button>
+            <button id="elevator-panel-button-number-0" class="elevator-panel-button" value="0">G</button>
+          </div>
         </div>
       </div>
     </div>

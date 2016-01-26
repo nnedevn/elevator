@@ -1,124 +1,93 @@
-ul {
-    margin: 0;
-}
-
 .elevator-direction {
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    
+  background-color: #000;
+  display: flex;
+  justify-content: center;
 }
+
 .elevator-indicator {
-    font-size: 48px;
-    font-weight: bold;
-    float: left;
-    color: #999;
-    padding: 12px;
+  font-size: 48px;
+  font-weight: bold;
+  float: left;
+  color: #999;
+  padding: 12px;
 }
+
 #current-floor-indicator {
-    color: #FFCC00;
+  color: #FFCC00;
 }
+
 .floor {
-    border: 1px solid #AAA;
+  border: 1px solid #AAA;
 }
 
-.elevator-cart { 
-    background-color: #DDD;
+.elevator-cart {
+  background-color: #DDD;
 }
 
-.elevator-panel .row { 
-    background-color: #BBB;
-    display: flex;
-    justify-content:center;
+.elevator-panel .row {
+  background-color: #BBB;
+  display: flex;
+  justify-content: center;
 }
 
 .elevator-panel-button {
-    color: #FFF;
-    font-size: 36px;
-    font-weight: bold;
-    background-color: #111;
-    border: 3px solid #444;
-    height: 96px;
-    width: 96px;
-    border-radius: 48px;
-    margin: 18px;
+  color: #FFF;
+  font-size: 36px;
+  font-weight: bold;
+  background-color: #111;
+  border: 3px solid #444;
+  height: 96px;
+  width: 96px;
+  border-radius: 48px;
+  margin: 18px;
 }
 
 .active {
-    color: #FFCC00 !important;
+  color: #FFCC00 !important;
 }
 
-.floor-panel { 
-    background-color: #888;
+.floor-panel {
+  background-color: #888;
 }
+
 .floor-panel-control {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    border: 1px solid #999;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  border: 1px solid #999;
 }
 
 span.floor-panel-label, span.floor-number-label {
-    float: left;
-    font-size: 36px;
-    line-height: 64px;
-    min-height: 64px;
-    font-weight: bold;
-    color: #000;
+  float: left;
+  font-size: 36px;
+  line-height: 64px;
+  min-height: 64px;
+  font-weight: bold;
+  color: #000;
 }
+
 span.floor-number-label {
-    padding: 0 20px;
+  padding: 0 20px;
+}
+
+.floor-panel-control ul {
+  margin:0 !important;
 }
 
 .floor-panel-control ul li {
-    list-style: none;
-    float: left;
+  list-style: none;
+  float: left;
 }
 
 .floor-panel-control ul li button {
-    height: 52px;
-    width: 52px;
-    background: #CCC;
-    border: none;
-    font-size: 24px;
-    color: #888;
-    border-radius: 12px;
-    margin: 5px;
-    border: 4px solid #666;
-    outline: none;
+  height: 52px;
+  width: 52px;
+  background: #CCC;
+  border: none;
+  font-size: 24px;
+  color: #888;
+  border-radius: 12px;
+  margin: 5px;
+  border: 4px solid #666;
+  outline: none;
 }
-
-
-
-
-/*#elevator-direction {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d2d2d2;
-}
-
-#floor-panel {
-    background-color: lightgreen;
-    width: 300px
-}
-
-#elevator-cart{
-    width:50px;
-    background-color: lightpink;
-}
-
-#elevator-panel{
-    width: 300px;
-    background-color: lightblue;
-
-}
-
-.flex{
-    height:600px;
-    display:flex;
-}
-
-
-*/
-

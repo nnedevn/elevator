@@ -3,7 +3,7 @@
 let ElevatorCtrl = (function() {
   function ElevatorCtrl() {
     this.travelSpeed = 1; //sec
-    this.loadUnloadSpeed = 3; //sec 
+    this.loadUnloadSpeed = 3; //sec
     this.currentSpeed = 1;
     this.destinationFloor = 0;
     this.destinationsList = [];
@@ -77,7 +77,7 @@ let ElevatorCtrl = (function() {
         ctrl.destinationsList.shift();
         ctrl.refresh();
       }
-      // TODO: Refactor and optimize. 
+      // TODO: Refactor and optimize.
       if (!ctrl.elevator.timer) {
         if (ctrl.elevator.direction === 0) {
           setTimeout(function() {
@@ -160,7 +160,7 @@ function uiBehaviour(ctrl, event) {
     $('#up-indicator, #down-indicator').removeClass('active');
     $('#current-floor-indicator').addClass('active');
     $('#elevator-panel-button-number-' + ctrl.currentFloor).removeClass('active');
-
+    $('#floor-panel').find('button[value=' + ctrl.currentFloor +']').removeClass('active');
     // let ding = new Audio('http://soundbible.com/grab.php?id=1441&type=mp3');
     // ding.play();
   }
@@ -175,22 +175,23 @@ lift.addCallback(moveImage)
 // possible switchImage. Open and closed doors.
 
 /** Initiates the elevator by sending the value attribute of the button pressed to the lyft object.
- *
+ *ds
 */
 $(function init() {
 
-
-  $('#elevator-panel button, #floor-panel ul li button').click(function() {
+console.log($('#floor-panel:has(button)').val());
+console.log($('#elevator-panel').val());
+  $('#elevator-panel button, #floor-panel button').click(function() {
     $(this).addClass('active');
     lift.buttonPress($(this).val());
-    console.log(this);
 
   });
 });
 
 
+
 /*
-  if what was clicked was on the elevator pannel 
+  if what was clicked was on the elevator pannel
   this will be determined if the parent of this has an id of elevator-pannel
 
   if what was clicked belongs to the floor pannel

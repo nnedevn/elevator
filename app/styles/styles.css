@@ -1,5 +1,5 @@
-body {
-
+ul {
+    margin: 0;
 }
 
 .elevator-direction {
@@ -13,6 +13,7 @@ body {
     font-weight: bold;
     float: left;
     color: #999;
+    padding: 12px;
 }
 #current-floor-indicator {
     color: #FFCC00;
@@ -20,13 +21,15 @@ body {
 .floor {
     border: 1px solid #AAA;
 }
+
 .elevator-cart { 
     background-color: #DDD;
 }
 
-.elevator-panel { 
+.elevator-panel .row { 
     background-color: #BBB;
-    padding: 50px;
+    display: flex;
+    justify-content:center;
 }
 
 .elevator-panel-button {
@@ -38,7 +41,7 @@ body {
     height: 96px;
     width: 96px;
     border-radius: 48px;
-    margin: 8px;
+    margin: 18px;
 }
 
 .active {
@@ -49,8 +52,8 @@ body {
     background-color: #888;
 }
 .floor-panel-control {
-    display: block;
-    clear: both;
+    display: flex;
+    justify-content: center;
     height: 100%;
     border: 1px solid #999;
 }
@@ -59,8 +62,12 @@ span.floor-panel-label, span.floor-number-label {
     float: left;
     font-size: 36px;
     line-height: 64px;
+    min-height: 64px;
     font-weight: bold;
     color: #000;
+}
+span.floor-number-label {
+    padding: 0 20px;
 }
 
 .floor-panel-control ul li {
